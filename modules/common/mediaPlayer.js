@@ -91,7 +91,6 @@ function mplayer(player) {
     return Widget.Button({
       hexpand: true,
       on_clicked: () => player.previous(),
-      visible: player.bind("can_go_prev"),
       child: Widget.Icon(PREV_ICON),
     });
   };
@@ -100,7 +99,6 @@ function mplayer(player) {
     return Widget.Button({
       class_name: "play-pause",
       on_clicked: () => player.playPause(),
-      visible: player.bind("can_play"),
       hexpand: true,
       child: Widget.Icon({
         icon: player.bind("play_back_status").transform((s) => {
@@ -120,7 +118,6 @@ function mplayer(player) {
     return Widget.Button({
       on_clicked: () => player.next(),
       hexpand: true,
-      visible: player.bind("can_go_next"),
       child: Widget.Icon(NEXT_ICON),
     });
   };
