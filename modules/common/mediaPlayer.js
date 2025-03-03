@@ -168,7 +168,7 @@ export default function mediaPlayer() {
     vertical: true,
     visible: players.as((p) => p.length > 0),
     children: players.as((p) =>
-      p.filter((p) => p.play_back_status != "Stopped").map(mplayer),
+      p.filter((p) => !["firefox", "chromium"].includes(p.name)).map(mplayer),
     ),
   });
 }
