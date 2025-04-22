@@ -3,6 +3,8 @@ const battery = await Service.import("battery");
 const powerprofiles = await Service.import("powerprofiles");
 const profiles = powerprofiles.profiles.reverse();
 
+//import { cpu, mem } from "./statWidget.js";
+
 const nameMap = {
   "power-saver": "Power Saver",
   balanced: "Balanced",
@@ -11,6 +13,10 @@ const nameMap = {
 
 function powerbox(profile) {
   let modename = nameMap[profile.Profile];
+
+  const ccss = powerprofiles.bind("active_profile").as(
+    (activeProfile) => (profile.Profile == activeProfile ? [] : []), // add mem and cpu stuff here in the future
+  );
 
   return Widget.Button({
     className: powerprofiles
@@ -29,6 +35,11 @@ function powerbox(profile) {
       children: [
         Widget.Icon(`power-profile-${profile.Profile}-symbolic`),
         Widget.Label({ hpack: "start", label: modename }),
+        Widget.Box({
+          hexpand: true,
+          hpack: "end",
+          children: ccss,
+        }),
       ],
     }),
   });

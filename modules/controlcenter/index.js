@@ -3,6 +3,7 @@ const battery = await Service.import("battery");
 import bluetoothButton from "./bluetooth.js";
 import networkButton from "./network.js";
 import nightlightButton from "./nightlight.js";
+import syncthingButton from "./syncthing.js";
 import powerProfileButton from "./powerprofile.js";
 import brightnessSlider from "../common/brightnessSlider.js";
 import volumeSlider from "../common/volumeSlider.js";
